@@ -9,6 +9,7 @@ How to use?
 4. Measure the size of the selected area, and the user is provided with information
 
 additional features
+
 1.Settings that allow you to display sizes in different units
 2.Ability to measure multiple objects simultaneously and display results simultaneously
 
