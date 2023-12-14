@@ -7,7 +7,7 @@ import tkinter as tk
 from tkinter import messagebox
 
 def eye_aspect_ratio(eye):
-    # 눈의 세로 방향 비율 계산
+    # 눈의 세로 방향 비율 
     A = dist.euclidean(eye[1], eye[5])
     B = dist.euclidean(eye[2], eye[4])
     C = dist.euclidean(eye[0], eye[3])
@@ -15,14 +15,14 @@ def eye_aspect_ratio(eye):
     return ear
 
 def midpoint(ptA, ptB):
-    # 두 점의 중점 계산
+    # 두 점의 중점 
     return ((ptA[0] + ptB[0]) * 0.5, (ptA[1] + ptB[1]) * 0.5)
 
-# 눈의 비율과 허용되는 최대 프레임 내 눈 깜빡임 횟수 설정
+# 눈의 비율과 허용되는 최대 프레임 내 눈 깜빡임 횟수
 EYE_AR_THRESH = 0.3
 EYE_AR_CONSEC_FRAMES = 48
 
-# 얼굴 검출기 및 얼굴 랜드마크 검출기 초기화
+# 얼굴 검출기 / 얼굴 랜드마크 검출기 초기화
 detector = dlib.get_frontal_face_detector()
 predictor = dlib.shape_predictor("shape_predictor_68_face_landmarks.dat")
 
@@ -33,7 +33,7 @@ predictor = dlib.shape_predictor("shape_predictor_68_face_landmarks.dat")
 # 웹캠 초기화
 cap = cv2.VideoCapture(0)
 
-# 웹캠이 제대로 열렸는지 확인
+# 웹캠 연결 유무 확인
 if not cap.isOpened():
     print("웹캠을 열 수 없습니다. 프로그램을 종료합니다.")
     exit()
@@ -45,7 +45,7 @@ is_sleeping = False
 start_sleep_time = None
 start_time = time.time()
 
-# 알림창을 띄우기 위한 Tkinter 초기화
+# 알림창을 Tkinter 초기화
 root = tk.Tk()
 root.withdraw()  # 창을 숨기기
 
@@ -89,7 +89,7 @@ while True:
             messagebox.showinfo("알림", "눈을 뜨세요!")
             blink_counter = 0
 
-    # 1분 간격으로 통계 출력 및 화면에 결과 표시
+    # 1분 간격으로 통계 출력 및 결과 표시
     elapsed_time = time.time() - start_time
     if elapsed_time > 60:
         print(f"Total Blinking Time: {TOTAL} seconds")
